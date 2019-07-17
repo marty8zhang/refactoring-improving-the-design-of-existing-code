@@ -1,0 +1,16 @@
+{
+    "name": "refactoring-examples",
+    "version": "1.0.0",
+    "scripts": {
+        "test": "mocha --require @babel/polyfill --require @babel/register"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@babel/cli": "^7.5.0",
+        "@babel/core": "^7.5.4",
+        "@babel/polyfill": "^7.4.4",
+        "@babel/preset-env": "^7.5.4",
+        "@babel/register": "^7.4.4",
+        "mocha": "latest"
+    }
+}
