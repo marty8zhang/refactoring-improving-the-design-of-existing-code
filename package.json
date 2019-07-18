@@ -2,7 +2,7 @@
     "name": "refactoring-examples",
     "version": "1.0.0",
     "scripts": {
-        "test": "mocha --require @babel/polyfill --require @babel/register"
+        "test": "mocha --require @babel/polyfill --require @babel/register --recursive"
     },
     "dependencies": {},
     "devDependencies": {

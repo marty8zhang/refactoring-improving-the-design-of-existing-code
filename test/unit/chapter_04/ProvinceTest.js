@@ -2,8 +2,8 @@
 
 import {describe} from "mocha";
 import {strict as assert} from "assert";
-import {Province} from "../chapter_04/Province";
-import {sampleProvinceData} from "../chapter_04/sampleProvinceData";
+import {Province} from "../../../chapter_04/Province";
+import {sampleProvinceData} from "../../../chapter_04/sampleProvinceData";
 
 describe("Province", function() {
     it("shortfall", function() {
