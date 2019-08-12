@@ -1,11 +1,12 @@
 "use strict";
 
 import {describe} from "mocha";
-// import {strict as assert} from "assert";
 import {Province} from "../../../chapter_04/Province";
 import {sampleProvinceData} from "../../../chapter_04/sampleProvinceData";
-
-const {assert, expect} = require('chai');
+import {
+    assert,
+    expect,
+} from "chai";
 
 describe("Province", function () {
     let asia;
