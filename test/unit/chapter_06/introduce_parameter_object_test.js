@@ -17,6 +17,7 @@ describe("Chapter 06", function () {
 
     describe("Introduce Parameter Object", function () {
         it("readingsOutsideRange", function () {
+            const range = new NumberRange(operatingPlan.temperatureFloor, operatingPlan.temperatureCeiling);
             const expectedReadings = [
                 {temp: 47, time: '2016-11-10 09:10'},
                 {temp: 58, time: '2016-11-10 09:30'},
@@ -24,13 +25,10 @@ describe("Chapter 06", function () {
 
             actualReadings = readingsOutsideRange(
                 station,
-                operatingPlan.temperatureFloor,
-                operatingPlan.temperatureCeiling
+                range
             );
 
             expect(actualReadings).to.eql(expectedReadings);
         });
     });
 });
-
-// console.log(station);
