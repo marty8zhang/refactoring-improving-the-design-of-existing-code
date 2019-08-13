@@ -1,12 +1,12 @@
 "use strict";
 
 import {describe} from "mocha";
-import {Province} from "../../../chapter_04/Province";
-import {sampleProvinceData} from "../../../chapter_04/sampleProvinceData";
 import {
     assert,
     expect,
 } from "chai";
+import {Province} from "../../../chapter_04/Province";
+import {sampleProvinceData} from "../../../chapter_04/sampleProvinceData";
 
 describe("Chapter 04 - Province", function () {
     let asia;
