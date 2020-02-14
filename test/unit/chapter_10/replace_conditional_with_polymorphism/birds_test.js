@@ -8,7 +8,7 @@ import {
   speeds
 } from '../../../../src/chapter_10/replace_conditional_with_polymorphism/birds.js'
 
-const testBirds = [
+const testBirdsData = [
   {
     name: 'Test AfricanSwallow 1',
     type: 'AfricanSwallow',
@@ -57,13 +57,13 @@ describe('Chapter 10', function () {
           ['Test NorwegianBlueParrot 1', 'beautiful'],
           ['Test NorwegianBlueParrot 2', 'scorched']
         ])
-        const actualPlumages = plumages(testBirds)
+        const actualPlumages = plumages(testBirdsData)
 
         expect(
           actualPlumages,
                     `Failed to assert that the expected plumages:
 ${util.format('%s', expectedPlumages)}
-deeply equals to the actual plumages:
+deeply equals the actual plumages:
 ${util.format('%s', actualPlumages)}`
         ).to.eql(expectedPlumages)
       })
@@ -76,13 +76,13 @@ ${util.format('%s', actualPlumages)}`
           ['Test NorwegianBlueParrot 1', 20],
           ['Test NorwegianBlueParrot 2', 0]
         ])
-        const actualSpeeds = speeds(testBirds)
+        const actualSpeeds = speeds(testBirdsData)
 
         expect(
           actualSpeeds,
                     `Failed to assert that the expected speeds:
 ${util.format('%s', expectedSpeeds)}
-deeply equals to the actual speeds:
+deeply equals the actual speeds:
 ${util.format('%s', actualSpeeds)}`
         ).to.eql(expectedSpeeds)
       })
