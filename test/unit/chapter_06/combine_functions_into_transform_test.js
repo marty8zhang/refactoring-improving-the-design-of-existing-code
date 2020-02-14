@@ -3,7 +3,7 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import { _ } from 'lodash'
-import { enrichReading } from '../../../chapter_06/combine_functions_into_transform.js'
+import { enrichReading } from '../../../src/chapter_06/combine_functions_into_transform.js'
 
 describe('Chapter 06', function () {
   describe('Combine Functions into Transform', function () {

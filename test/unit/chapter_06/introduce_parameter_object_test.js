@@ -6,7 +6,7 @@ import {
   station,
   operatingPlan,
   readingsOutsideRange
-} from '../../../chapter_06/introduce_parameter_object.js'
+} from '../../../src/chapter_06/introduce_parameter_object.js'
 
 describe('Chapter 06', function () {
   let actualReadings

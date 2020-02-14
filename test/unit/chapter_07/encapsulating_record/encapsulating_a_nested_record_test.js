@@ -6,7 +6,7 @@ import {
   getRawCustomersData,
   getCustomersDataObject,
   compareUsageWithTheYearBefore
-} from '../../../../chapter_07/encapsulate_record/encapsulating_a_nested_record.js'
+} from '../../../../src/chapter_07/encapsulate_record/encapsulating_a_nested_record.js'
 
 describe('Chapter 07', function () {
   describe('Encapsulate Record', function () {

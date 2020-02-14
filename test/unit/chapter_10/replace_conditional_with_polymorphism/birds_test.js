@@ -6,7 +6,7 @@ import { expect } from 'chai'
 import {
   plumages,
   speeds
-} from '../../../../chapter_10/replace_conditional_with_polymorphism/birds.js'
+} from '../../../../src/chapter_10/replace_conditional_with_polymorphism/birds.js'
 
 const testBirds = [
   {
