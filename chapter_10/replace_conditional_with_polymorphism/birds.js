@@ -1,46 +1,46 @@
-"use strict";
+'use strict'
 
 export {
-    plumages,
-    speeds
-};
-
-function plumages(birds) {
-    return new Map(birds.map(b => [b.name, new Bird(b).plumage]));
+  plumages,
+  speeds
 }
 
-function speeds(birds) {
-    return new Map(birds.map(b => [b.name, new Bird(b).airSpeedVelocity]));
+function plumages (birds) {
+  return new Map(birds.map(b => [b.name, new Bird(b).plumage]))
+}
+
+function speeds (birds) {
+  return new Map(birds.map(b => [b.name, new Bird(b).airSpeedVelocity]))
 }
 
 class Bird {
-    constructor(birdObject) {
-        Object.assign(this, birdObject);
-    }
+  constructor (birdObject) {
+    Object.assign(this, birdObject)
+  }
 
-    get plumage() {
-        switch (this.type) {
-            case 'EuropeanSwallow':
-                return "average";
-            case 'AfricanSwallow':
-                return (this.numberOfCoconuts > 2) ? "tired" : "average";
-            case 'NorwegianBlueParrot':
-                return (this.voltage > 100) ? "scorched" : "beautiful";
-            default:
-                return "unknown";
-        }
+  get plumage () {
+    switch (this.type) {
+      case 'EuropeanSwallow':
+        return 'average'
+      case 'AfricanSwallow':
+        return (this.numberOfCoconuts > 2) ? 'tired' : 'average'
+      case 'NorwegianBlueParrot':
+        return (this.voltage > 100) ? 'scorched' : 'beautiful'
+      default:
+        return 'unknown'
     }
+  }
 
-    get airSpeedVelocity() {
-        switch (this.type) {
-            case 'EuropeanSwallow':
-                return 35;
-            case 'AfricanSwallow':
-                return 40 - 2 * this.numberOfCoconuts;
-            case 'NorwegianBlueParrot':
-                return (this.isNailed) ? 0 : 10 + this.voltage / 10;
-            default:
-                return null;
-        }
+  get airSpeedVelocity () {
+    switch (this.type) {
+      case 'EuropeanSwallow':
+        return 35
+      case 'AfricanSwallow':
+        return 40 - 2 * this.numberOfCoconuts
+      case 'NorwegianBlueParrot':
+        return (this.isNailed) ? 0 : 10 + this.voltage / 10
+      default:
+        return null
     }
+  }
 }

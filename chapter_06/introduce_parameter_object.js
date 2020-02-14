@@ -1,41 +1,41 @@
-"use strict";
+'use strict'
 
-export {station, operatingPlan, readingsOutsideRange, NumberRange};
-
-function readingsOutsideRange(station, range) {
-    return station.readings
-        .filter(r => false === range.contains(r.temp));
+function readingsOutsideRange (station, range) {
+  return station.readings
+    .filter(r => range.contains(r.temp) === false)
 }
 
 class NumberRange {
-    constructor(min, max) {
-        this._data = {min: min, max: max};
-    }
+  constructor (min, max) {
+    this._data = { min: min, max: max }
+  }
 
-    get min() {
-        return this._data.min;
-    }
+  get min () {
+    return this._data.min
+  }
 
-    get max() {
-        return this._data.max;
-    }
+  get max () {
+    return this._data.max
+  }
 
-    contains(arg) {
-        return (arg >= this.min && arg <= this.max);
-    }
+  contains (arg) {
+    return (arg >= this.min && arg <= this.max)
+  }
 }
 
 const operatingPlan = {
-    temperatureRange: new NumberRange(48, 55),
-};
+  temperatureRange: new NumberRange(48, 55)
+}
 
 const station = {
-    name: "ZB1",
-    readings: [
-        {temp: 47, time: "2016-11-10 09:10"},
-        {temp: 53, time: "2016-11-10 09:20"},
-        {temp: 58, time: "2016-11-10 09:30"},
-        {temp: 53, time: "2016-11-10 09:40"},
-        {temp: 51, time: "2016-11-10 09:50"},
-    ]
-};
+  name: 'ZB1',
+  readings: [
+    { temp: 47, time: '2016-11-10 09:10' },
+    { temp: 53, time: '2016-11-10 09:20' },
+    { temp: 58, time: '2016-11-10 09:30' },
+    { temp: 53, time: '2016-11-10 09:40' },
+    { temp: 51, time: '2016-11-10 09:50' }
+  ]
+}
+
+export { station, operatingPlan, readingsOutsideRange, NumberRange }
