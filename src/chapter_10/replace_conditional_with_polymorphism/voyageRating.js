@@ -5,54 +5,65 @@ export {
 }
 
 function rating (voyage, history) {
-  const vpf = voyageProfitFactor(voyage, history)
-  const vr = voyageRisk(voyage)
-  const chr = captainHistoryRisk(voyage, history)
-
-  if (vpf * 3 > (vr + chr * 2)) return 'A'
-  else return 'B'
+  return new Rating(voyage, history).value
 }
 
-function voyageProfitFactor (voyage, history) {
-  let result = 2
-
-  if (voyage.zone === 'china') result += 1
-  if (voyage.zone === 'east-indies') result += 1
-  if (voyage.zone === 'china' && hasChina(history)) {
-    result += 3
-    if (history.length > 10) result += 1
-    if (voyage.length > 12) result += 1
-    if (voyage.length > 18) result -= 1
-  } else {
-    if (history.length > 8) result += 1
-    if (voyage.length > 14) result -= 1
+class Rating {
+  constructor (voyage, history) {
+    this._voyage = voyage
+    this._history = history
   }
 
-  return result
-}
+  get value () {
+    const vpf = this._voyageProfitFactor
+    const vr = this._voyageRisk
+    const chr = this._captainHistoryRisk
 
-function hasChina (history) {
-  return history.some(v => v.zone === 'china')
-}
+    if (vpf * 3 > (vr + chr * 2)) return 'A'
+    else return 'B'
+  }
 
-function voyageRisk (voyage) {
-  let result = 1
+  get _voyageProfitFactor () {
+    let result = 2
 
-  if (voyage.length > 4) result += 2
-  if (voyage.length > 8) result += voyage.length - 8
-  if (['china', 'east-indies'].includes(voyage.zone)) result += 4
+    if (this._voyage.zone === 'china') result += 1
+    if (this._voyage.zone === 'east-indies') result += 1
+    if (this._voyage.zone === 'china' && this._hasChinaHistory) {
+      result += 3
+      if (this._history.length > 10) result += 1
+      if (this._voyage.length > 12) result += 1
+      if (this._voyage.length > 18) result -= 1
+    } else {
+      if (this._history.length > 8) result += 1
+      if (this._voyage.length > 14) result -= 1
+    }
 
-  return Math.max(result, 0)
-}
+    return result
+  }
 
-function captainHistoryRisk (voyage, history) {
-  let result = 1
+  get _hasChinaHistory () {
+    return this._history.some(v => v.zone === 'china')
+  }
 
-  if (history.length < 5) result += 4
+  get _voyageRisk () {
+    let result = 1
 
-  result += history.filter(v => v.profit < 0).length
+    if (this._voyage.length > 4) result += 2
+    if (this._voyage.length > 8) result += this._voyage.length - 8
+    if (['china', 'east-indies'].includes(this._voyage.zone)) result += 4
 
-  if (voyage.zone === 'china' && hasChina(history)) result -= 2
+    return Math.max(result, 0)
+  }
 
-  return Math.max(result, 0)
+  get _captainHistoryRisk () {
+    let result = 1
+
+    if (this._history.length < 5) result += 4
+
+    result += this._history.filter(v => v.profit < 0).length
+
+    if (this._voyage.zone === 'china' && this._hasChinaHistory) result -= 2
+
+    return Math.max(result, 0)
+  }
 }
