@@ -14,6 +14,8 @@ function createRating (voyage, history) {
       return new VoyageEastIndiesRating(voyage, history)
 
     case 'china':
+      return new VoyageChinaRating(voyage, history)
+
     default:
       return new Rating(voyage, history)
   }
@@ -37,7 +39,6 @@ class Rating {
   get _voyageProfitFactor () {
     let result = 2
 
-    if (this._voyage.zone === 'china') result += 1
     if (this._voyage.zone === 'china' && this._hasChinaHistory) {
       result += 3
       if (this._history.length > 10) result += 1
@@ -60,7 +61,6 @@ class Rating {
 
     if (this._voyage.length > 4) result += 2
     if (this._voyage.length > 8) result += this._voyage.length - 8
-    if (['china'].includes(this._voyage.zone)) result += 4
 
     return Math.max(result, 0)
   }
@@ -72,7 +72,25 @@ class Rating {
 
     result += this._history.filter(v => v.profit < 0).length
 
-    if (this._voyage.zone === 'china' && this._hasChinaHistory) result -= 2
+    return Math.max(result, 0)
+  }
+}
+
+class VoyageChinaRating extends Rating {
+  get _voyageProfitFactor () {
+    return super._voyageProfitFactor + 1
+  }
+
+  get _voyageRisk () {
+    return Math.max(super._voyageRisk + 4, 0)
+  }
+
+  get _captainHistoryRisk () {
+    let result = super._captainHistoryRisk
+
+    if (this._hasChinaHistory) {
+      result -= 2
+    }
 
     return Math.max(result, 0)
   }
