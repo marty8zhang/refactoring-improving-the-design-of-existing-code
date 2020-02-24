@@ -39,16 +39,25 @@ class Rating {
   get _voyageProfitFactor () {
     let result = 2
 
-    result += this._voyageAndHistoryLengthFactors
+    result += this._voyageLengthFactor
+
+    result += this._historyLengthFactor
 
     return result
   }
 
-  get _voyageAndHistoryLengthFactors () {
+  get _voyageLengthFactor () {
+    let result = 0
+
+    if (this._voyage.length > 14) result -= 1
+
+    return result
+  }
+
+  get _historyLengthFactor () {
     let result = 0
 
     if (this._history.length > 8) result += 1
-    if (this._voyage.length > 14) result -= 1
 
     return result
   }
@@ -82,16 +91,27 @@ class VoyageChinaRating extends Rating {
     return super._voyageProfitFactor + 1
   }
 
-  get _voyageAndHistoryLengthFactors () {
+  get _voyageLengthFactor () {
     let result = 0
 
     if (this._hasChinaHistory) {
       result += 3
-      if (this._history.length > 10) result += 1
       if (this._voyage.length > 12) result += 1
       if (this._voyage.length > 18) result -= 1
     } else {
-      result = super._voyageAndHistoryLengthFactors
+      result = super._voyageLengthFactor
+    }
+
+    return result
+  }
+
+  get _historyLengthFactor () {
+    let result = 0
+
+    if (this._hasChinaHistory && this._history.length > 10) {
+      result += 1
+    } else {
+      result = super._historyLengthFactor
     }
 
     return result
