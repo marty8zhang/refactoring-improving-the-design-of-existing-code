@@ -3,7 +3,7 @@
 import { describe, beforeEach, it } from 'mocha'
 import {
   assert,
-  expect
+  expect,
 } from 'chai'
 import { Province } from '../../../src/chapter_04/Province'
 import { sampleProvinceData } from '../../../src/chapter_04/sampleProvinceData'
@@ -61,7 +61,7 @@ describe('Chapter 04', function () {
         name: 'Province without producers',
         producers: [],
         demand: 30,
-        price: 20
+        price: 20,
       }
       noProducers = new Province(data)
     })

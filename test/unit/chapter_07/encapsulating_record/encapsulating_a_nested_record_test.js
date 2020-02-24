@@ -5,7 +5,7 @@ import { expect } from 'chai'
 import {
   getRawCustomersData,
   getCustomersDataObject,
-  compareUsageWithTheYearBefore
+  compareUsageWithTheYearBefore,
 } from '../../../../src/chapter_07/encapsulate_record/encapsulating_a_nested_record.js'
 
 describe('Chapter 07', function () {

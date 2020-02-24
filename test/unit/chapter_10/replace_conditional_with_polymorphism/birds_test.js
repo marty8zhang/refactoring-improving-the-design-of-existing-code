@@ -5,7 +5,7 @@ import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
   plumages,
-  speeds
+  speeds,
 } from '../../../../src/chapter_10/replace_conditional_with_polymorphism/birds.js'
 
 const testBirdsData = [
@@ -14,36 +14,36 @@ const testBirdsData = [
     type: 'AfricanSwallow',
     numberOfCoconuts: 2,
     voltage: 0,
-    isNailed: false
+    isNailed: false,
   },
   {
     name: 'Test AfricanSwallow 2',
     type: 'AfricanSwallow',
     numberOfCoconuts: 3,
     voltage: 0,
-    isNailed: false
+    isNailed: false,
   },
   {
     name: 'Test EuropeanSwallow 1',
     type: 'EuropeanSwallow',
     numberOfCoconuts: 0,
     voltage: 0,
-    isNailed: false
+    isNailed: false,
   },
   {
     name: 'Test NorwegianBlueParrot 1',
     type: 'NorwegianBlueParrot',
     numberOfCoconuts: 0,
     voltage: 100,
-    isNailed: false
+    isNailed: false,
   },
   {
     name: 'Test NorwegianBlueParrot 2',
     type: 'NorwegianBlueParrot',
     numberOfCoconuts: 0,
     voltage: 101,
-    isNailed: true
-  }
+    isNailed: true,
+  },
 ]
 
 describe('Chapter 10', function () {
@@ -55,7 +55,7 @@ describe('Chapter 10', function () {
           ['Test AfricanSwallow 2', 'tired'],
           ['Test EuropeanSwallow 1', 'average'],
           ['Test NorwegianBlueParrot 1', 'beautiful'],
-          ['Test NorwegianBlueParrot 2', 'scorched']
+          ['Test NorwegianBlueParrot 2', 'scorched'],
         ])
         const actualPlumages = plumages(testBirdsData)
 
@@ -64,7 +64,7 @@ describe('Chapter 10', function () {
                     `Failed to assert that the expected plumages:
 ${util.format('%s', expectedPlumages)}
 deeply equals the actual plumages:
-${util.format('%s', actualPlumages)}`
+${util.format('%s', actualPlumages)}`,
         ).to.eql(expectedPlumages)
       })
 
@@ -74,7 +74,7 @@ ${util.format('%s', actualPlumages)}`
           ['Test AfricanSwallow 2', 34],
           ['Test EuropeanSwallow 1', 35],
           ['Test NorwegianBlueParrot 1', 20],
-          ['Test NorwegianBlueParrot 2', 0]
+          ['Test NorwegianBlueParrot 2', 0],
         ])
         const actualSpeeds = speeds(testBirdsData)
 
@@ -83,7 +83,7 @@ ${util.format('%s', actualPlumages)}`
                     `Failed to assert that the expected speeds:
 ${util.format('%s', expectedSpeeds)}
 deeply equals the actual speeds:
-${util.format('%s', actualSpeeds)}`
+${util.format('%s', actualSpeeds)}`,
         ).to.eql(expectedSpeeds)
       })
     })
