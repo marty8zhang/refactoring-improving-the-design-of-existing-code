@@ -88,14 +88,19 @@ class Rating {
 
 class VoyageChinaRating extends Rating {
   get _voyageProfitFactor () {
-    return super._voyageProfitFactor + 1
+    let result = super._voyageProfitFactor + 1
+
+    if (this._hasChinaHistory) {
+      result += 3
+    }
+
+    return result
   }
 
   get _voyageLengthFactor () {
     let result = 0
 
     if (this._hasChinaHistory) {
-      result += 3
       if (this._voyage.length > 12) result += 1
       if (this._voyage.length > 18) result -= 1
     } else {
