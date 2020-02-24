@@ -2,14 +2,14 @@
 
 export {
   plumages,
-  speeds
+  speeds,
 }
 
 function plumages (birds) {
   return new Map(
     birds
       .map(b => createBird(b))
-      .map(b => [b.name, b.plumage])
+      .map(b => [b.name, b.plumage]),
   )
 }
 
@@ -17,7 +17,7 @@ function speeds (birds) {
   return new Map(
     birds
       .map(b => createBird(b))
-      .map(b => [b.name, b.airSpeedVelocity])
+      .map(b => [b.name, b.airSpeedVelocity]),
   )
 }
 

@@ -24,7 +24,7 @@ class NumberRange {
 }
 
 const operatingPlan = {
-  temperatureRange: new NumberRange(48, 55)
+  temperatureRange: new NumberRange(48, 55),
 }
 
 const station = {
@@ -34,8 +34,8 @@ const station = {
     { temp: 53, time: '2016-11-10 09:20' },
     { temp: 58, time: '2016-11-10 09:30' },
     { temp: 53, time: '2016-11-10 09:40' },
-    { temp: 51, time: '2016-11-10 09:50' }
-  ]
+    { temp: 51, time: '2016-11-10 09:50' },
+  ],
 }
 
 export { station, operatingPlan, readingsOutsideRange, NumberRange }
